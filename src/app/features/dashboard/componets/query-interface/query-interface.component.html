@@ -1,0 +1,59 @@
+<eui-card>
+    <eui-card-header>
+        <eui-card-header-title>Query Interface</eui-card-header-title>
+        <eui-card-header-subtitle
+            >Ask questions in plain English to extract insights from your
+            data</eui-card-header-subtitle
+        >
+    </eui-card-header>
+
+    <eui-card-content>
+        <div>
+            <form #myForm="ngForm" id="my-form" novalidate>
+                <div euiInputGroup>
+                    <textarea
+                        euiTextArea
+                        id="template_driven"
+                        placeholder="Enter your query in plain English... (e.g., 'Show me sales trends for the past 6 months')"
+                        name="story"
+                        rows="5"
+                        [(ngModel)]="query"
+                        required
+                        #story="ngModel"
+                    >
+                    </textarea>
+                </div>
+            </form>
+            <div class="eui-u-mt-m">
+                <button
+                    euiDisabled="{{ !myForm.valid }}"
+                    (click)="runQuery()"
+                    euiButton
+                    class="eui-u-mr-s eui-u-mb-s"
+                    euiPrimary
+                >
+                    Run Query
+                </button>
+            </div>
+        </div>
+        <div *ngIf="!myForm.valid" class="container">
+            <div class="row">
+                <div class="col-md-12">Example Queries</div>
+            </div>
+            <div class="row">
+                @for(example of exampleQueries; let i = $index; track example) {
+                <div class="col-md-6 eui-u-pt-m">
+                    <eui-card>
+                        <eui-card-content
+                            class="eui-u-cursor-pointer"
+                            (click)="runExampleQuery(example)"
+                        >
+                            {{ example }}
+                        </eui-card-content>
+                    </eui-card>
+                </div>
+                }
+            </div>
+        </div>
+    </eui-card-content>
+</eui-card>

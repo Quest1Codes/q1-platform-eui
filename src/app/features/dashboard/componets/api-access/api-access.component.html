@@ -1,0 +1,28 @@
+<eui-card>
+    <eui-card-header>
+        <eui-card-header-title>API Documentation</eui-card-header-title>
+        <eui-card-header-subtitle
+            >Integrate with Quest1 platform using our REST
+            APIs</eui-card-header-subtitle
+        >
+    </eui-card-header>
+    <eui-card-content>
+        <p class="eui-u-f-l-bold">Authentication</p>
+        <p>
+            All API requests require an API key that should be included in the
+            header:
+        </p>
+        <div class="eui-u-p-m eui-u-c-bg-neutral-bg" style="border-radius: 1em">
+            Authorization: Bearer YOUR_API_KEY
+        </div>
+        <p class="eui-u-f-l-bold">Available Endpoints</p>
+        <p class="eui-u-f-m-bold eui-u-mb-none">GET /data-sources</p>
+        <div>List all available data sources</div>
+        <p class="eui-u-f-m-bold eui-u-mb-none">POST /query</p>
+        <div>Send a natural language query and receive structured results</div>
+        <p class="eui-u-f-m-bold eui-u-mb-none">POST /ingest</p>
+        <div>Ingest new data into the platform</div>
+        <p class="eui-u-f-m-bold eui-u-mb-none">GET /system/status</p>
+        <div>Get the current system status</div>
+    </eui-card-content>
+</eui-card>

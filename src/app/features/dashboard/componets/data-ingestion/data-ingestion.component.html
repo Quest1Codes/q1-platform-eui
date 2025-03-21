@@ -1,0 +1,78 @@
+<eui-card>
+    <eui-card-header>
+        <eui-card-header-title> Data Ingestion </eui-card-header-title>
+        <eui-card-header-subtitle>
+            Import structured and unstructured data into the Quest1
+            platform</eui-card-header-subtitle
+        >
+    </eui-card-header>
+    <eui-card-content>
+        <eui-tabs isMainNavigation>
+            @for (tab of tabs; let i = $index; track tab) {
+            <eui-tab>
+                <eui-tab-label>{{ tab.tabLabel }}</eui-tab-label>
+                <eui-tab-content
+                    ><form [formGroup]="form" enctype="multipart/form-data">
+                        <eui-file-upload
+                            formControlName="image"
+                            [progress]="progress"
+                            [accept]="'.jpg'"
+                            hasDragArea
+                        >
+                            <span class="eui-u-mr-xs"
+                                ><button
+                                    euiButton
+                                    euiPrimary
+                                    (click)="submit()"
+                                >
+                                    Submit
+                                </button></span
+                            >
+                        </eui-file-upload>
+                    </form>
+                </eui-tab-content>
+            </eui-tab>
+            }
+        </eui-tabs>
+        <div class="eui-u-f-m eui-u-mt-m eui-u-f-bold">Recent Uploads</div>
+        @for(upload of recentUploads; let i = $index; track upload) {
+        <div
+            class="container eui-u-p-xs eui-u-mt-m eui-u-c-bg-primary-bg-light"
+        >
+            <div class="row">
+                <eui-icon-svg
+                    class="col-md-auto"
+                    size="xs"
+                    icon="document:outline"
+                />
+                <div class="col-md-11">
+                    <div class="eui-u-flex">
+                        <div class="eui-u-display-flex eui-u-flex-column">
+                            <span euiLabel>{{ upload.filename }}</span>
+                        </div>
+                        <div
+                            class="eui-u-ml-auto eui-u-c-neutral-dark eui-u-f-s"
+                        >
+                            {{ upload.sizeInMB }} MB
+                        </div>
+                    </div>
+                    <eui-progress-bar
+                        [progress]="(upload.uploaded / upload.sizeInMB) * 100"
+                    ></eui-progress-bar>
+                </div>
+                @if(upload.uploaded == upload.sizeInMB) {
+                <eui-icon-svg
+                    class="col-md-auto eui-u-c-success"
+                    size="xs"
+                    icon="eui-ecl-check-filled"
+                />
+                } @if(upload.uploaded != upload.sizeInMB) {
+                <div class="col-md-auto eui-u-c-neutral">
+                    {{ uplaodedPercentage(upload.sizeInMB, upload.uploaded) }} %
+                </div>
+                }
+            </div>
+        </div>
+        }
+    </eui-card-content>
+</eui-card>

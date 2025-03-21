@@ -1,0 +1,80 @@
+<eui-card>
+    <eui-card-header>
+        <eui-card-header-title> System Status </eui-card-header-title>
+    </eui-card-header>
+    <eui-card-content>
+        <div class="row">
+            <div class="col-12">
+                <ul euiList>
+                    @for(stat of systemStats; let i = $index; track stat) {
+                    <li
+                        euiListItem
+                        [ngClass]="{
+                        'eui-u-border-bottom-separator': systemStats.length - 1  > i,
+                    }"
+                    >
+                        <div class="eui-u-flex">
+                            <span
+                                euiIconSvg
+                                [icon]="stat.icon"
+                                fillColor="accent-140"
+                            ></span>
+                            <div
+                                class="eui-u-display-flex eui-u-flex-column eui-u-ml-m eui-u-f-bold"
+                            >
+                                <span euiLabel>{{ stat.title }}</span>
+                                <span
+                                    euiLabel
+                                    class="eui-u-f-s eui-u-c-neutral-lighter"
+                                    >Latency: 120ms
+                                    <span class="eui-u-pr-m"></span> Uptime:
+                                    99.99%
+                                </span>
+                            </div>
+                            <div
+                                [ngClass]="{
+                                'eui-u-c-success': stat.status === 'success',
+                                'eui-u-c-danger': stat.status === 'danger',
+                                'eui-u-c-warning': stat.status === 'warning',
+                                'eui-u-ml-auto eui-u-f-bold': true,
+                            }"
+                            >
+                                <span
+                                    euiIconSvg
+                                    [icon]="stat.icon"
+                                    size="xs"
+                                    fillColor="accent-140"
+                                ></span>
+                                {{ stat.statusLable }}
+                            </div>
+                        </div>
+                    </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </eui-card-content>
+</eui-card>
+
+<eui-card class="eui-u-mt-m">
+    <eui-card-header>
+        <eui-card-header-title> Resource Utilization</eui-card-header-title>
+    </eui-card-header>
+    <eui-card-content>
+        @for(resource of resources; let i = $index; track resource) {
+        <div class="eui-u-flex eui-u-pr-m eui-u-mt-m">
+            <div class="eui-u-display-flex eui-u-flex-column eui-u-ml-m">
+                <span euiLabel>{{ resource.title }}</span>
+            </div>
+            <div class="eui-u-ml-auto eui-u-c-neutral-lightest eui-u-f-s">
+                {{ resource.value }} / {{ resource.total }} {{ resource.scale }}
+            </div>
+        </div>
+        <eui-progress-bar
+            class="eui-u-pl-m eui-u-pr-m"
+            [progress]="(resource.value / resource.total) * 100"
+            euiSizeXS
+        ></eui-progress-bar>
+        }
+    </eui-card-content>
+</eui-card>

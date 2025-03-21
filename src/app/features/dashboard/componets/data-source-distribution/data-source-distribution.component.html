@@ -1,0 +1,22 @@
+<eui-card>
+    <eui-card-header>
+        <eui-card-header-title>
+            Data Source Distribution
+        </eui-card-header-title>
+        <eui-card-header-subtitle
+            >Insights across different data types</eui-card-header-subtitle
+        >
+    </eui-card-header>
+    <eui-card-content
+        ><eui-apex-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [dataLabels]="chartOptions.dataLabels"
+            [plotOptions]="chartOptions.plotOptions"
+            [yaxis]="chartOptions.yaxis"
+            [xaxis]="chartOptions.xaxis"
+            [fill]="chartOptions.fill"
+            [title]="chartOptions.title"
+        ></eui-apex-chart>
+    </eui-card-content>
+</eui-card>

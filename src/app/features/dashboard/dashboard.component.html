@@ -1,0 +1,22 @@
+<eui-page>
+    <eui-page-header label="Dashboard"></eui-page-header>
+
+    <eui-page-content>
+        <eui-tabs
+            pathMatch="full"
+            #euiTabs
+            (tabClose)="onTabClose($event)"
+            (tabSelect)="onTabSelect($event)"
+        >
+            @for (tab of tabs; let i = $index; track tab) {
+            <eui-tab [url]="tab.url">
+                <eui-tab-label>{{ tab.tabLabel }}</eui-tab-label>
+            </eui-tab>
+            }
+        </eui-tabs>
+
+        <div class="eui-u-mt-s">
+            <router-outlet></router-outlet>
+        </div>
+    </eui-page-content>
+</eui-page>

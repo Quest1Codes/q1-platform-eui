@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+        @for(stat of stats; let i = $index; track stat) {
+        <div class="col-md-4">
+            <eui-card>
+                <eui-card-header>
+                    <eui-card-header-title>
+                        {{ stat.title }}
+                        <eui-icon-svg
+                            class="eui-u-p-absolute"
+                            style="top: 1em; right: 1em"
+                            size="xs"
+                            icon="chart-line:fa-solid"
+                        />
+                    </eui-card-header-title>
+                </eui-card-header>
+                <eui-card-content>
+                    <span class="eui-u-f-xl">{{ stat.value }}</span>
+                    <span
+                        [ngClass]="{
+                            'eui-u-c-success': stat.changePercentage > 0,
+                            'eui-u-c-danger': stat.changePercentage < 0,
+                            'ui-u-f-sm': true,
+                            'eui-u-pl-xs': true
+                        }"
+                    >
+                        @if(stat.changePercentage > 0) {
+                        <eui-icon-svg size="xs" icon="arrow-up:outline" />
+                        } @if(stat.changePercentage < 0) {
+                        <eui-icon-svg size="xs" icon="arrow-down:outline" />
+                        }
+
+                        {{ stat.changePercentage }}%</span
+                    >
+                </eui-card-content>
+            </eui-card>
+        </div>
+        }
+    </div>
+    <div class="row eui-u-mt-m">
+        <div class="col-md-12">
+            <app-data-source-distribution />
+        </div>
+    </div>
+    <div class="row eui-u-mt-m">
+        <div class="col-md-6">
+            <app-query-interface />
+        </div>
+        <div class="col-md-6">
+            <app-system-status />
+        </div>
+    </div>
+</div>
