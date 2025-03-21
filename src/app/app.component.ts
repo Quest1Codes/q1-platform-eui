@@ -20,21 +20,36 @@ import { EuiMenuItem } from "@eui/components/eui-menu";
 })
 export class AppComponent {
     sidebarItems: EuiMenuItem[] = [
-        { label: "Dashboard", url: "screen/dashboard" },
-        { label: "Home", url: "screen/home" },
+        { label: "Main Navigation" },
         {
-            label: "Module 1",
-            url: "screen/module1",
-            children: [
-                { label: "page 1", url: "screen/module1/page1" },
-                { label: "page 2", url: "screen/module1/page2" },
-            ],
+            label: "Dashboard",
+            url: "screen/dashboard",
+            iconSvgName: "eui-home",
         },
-    ];
-    notificationItems = [
-        { label: "Title label 1", subLabel: "Subtitle label" },
-        { label: "Title label 2", subLabel: "Subtitle label" },
-        { label: "Title label 3", subLabel: "Subtitle label" },
-        { label: "Title label 4", subLabel: "Subtitle label" },
+        {
+            label: "Datasource",
+            url: "screen/datasource",
+            iconSvgName: "database:fa-solid",
+        },
+        {
+            label: "Data Ingestion",
+            url: "screen/data-ingestion",
+            iconSvgName: "cloud-arrow-up:fa-solid",
+        },
+        {
+            label: "Query Interface",
+            url: "screen/query-interface",
+            iconSvgName: "eui-search",
+        },
+        {
+            label: "Analytics",
+            url: "screen/analytics",
+            iconSvgName: "pie-chart:sharp",
+        },
+        {
+            label: "API Access",
+            url: "screen/api-access",
+            iconSvgName: "code:fa-solid",
+        },
     ];
 }
