@@ -11,12 +11,17 @@ describe("OverviewComponent", () => {
     let fixture: ComponentFixture<OverviewComponent>;
     let dashboardService: DashboardService;
     let statsSpy: any;
+    let changeStateLoaderSpy: any;
+
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             providers: [
                 {
                     provide: DashboardService,
-                    useValue: { fetchOverviewStats: () => {} },
+                    useValue: {
+                        fetchOverviewStats: () => {},
+                        changeStateLoader: () => {},
+                    },
                 },
                 {
                     provide: EUI_CONFIG_TOKEN,
@@ -28,6 +33,7 @@ describe("OverviewComponent", () => {
         component = fixture.componentInstance;
         dashboardService = TestBed.inject(DashboardService);
         statsSpy = spyOn(component.stats, "set");
+        changeStateLoaderSpy = spyOn(dashboardService, "changeStateLoader");
     });
     it("should call fetchOverviewStats when ngOnInit is executed", () => {
         const fetchOverviewStatsSpy = spyOn(
@@ -46,5 +52,15 @@ describe("OverviewComponent", () => {
         component.ngOnInit();
         expect(statsSpy).toHaveBeenCalledTimes(1);
         expect(statsSpy).toHaveBeenCalledWith(data);
+    });
+
+    it("should call changeStateLoader with false when data is received", () => {
+        const fetchOverviewStatsSpy = spyOn(
+            dashboardService,
+            "fetchOverviewStats"
+        ).and.returnValue(of([]));
+        component.ngOnInit();
+        expect(changeStateLoaderSpy).toHaveBeenCalledTimes(1);
+        expect(changeStateLoaderSpy).toHaveBeenCalledWith(false);
     });
 });

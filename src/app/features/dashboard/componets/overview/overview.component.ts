@@ -29,8 +29,8 @@ export class OverviewComponent implements OnInit {
 
     ngOnInit(): void {
         this.dashboardService.fetchOverviewStats().subscribe((data) => {
-            this.dashboardService.changeStateLoader(false);
             this.stats.set(data);
+            this.dashboardService.changeStateLoader(false);
         });
     }
 }
