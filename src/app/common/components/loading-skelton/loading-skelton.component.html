@@ -1,0 +1,17 @@
+<div class="container">
+    @for(row of rowsArray; track row) {
+    <div class="row">
+        @for(column of columnsArray; track column) {
+        <div [ngClass]="columnClass">
+            <eui-skeleton
+                [rectangle]="skeltonType() == 'rectangle'"
+                [circle]="skeltonType() == 'circle'"
+                [line]="skeltonType() == 'line'"
+                [square]="skeltonType() == 'square'"
+                [style.height.px]="height()"
+            ></eui-skeleton>
+        </div>
+        }
+    </div>
+    }
+</div>

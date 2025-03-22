@@ -16,6 +16,7 @@ import {
 
 import { EuiButtonComponent } from "@eui/components/eui-button";
 @Component({
+    standalone: true,
     selector: "app-data-ingestion",
     imports: [
         EuiCardModule,
@@ -23,8 +24,6 @@ import { EuiButtonComponent } from "@eui/components/eui-button";
         EuiProgressBarComponent,
         EuiIconModule,
         EuiFileUploadModule,
-        // FormControl,
-        // FormGroup,
         ReactiveFormsModule,
         EuiButtonComponent,
     ],
@@ -32,7 +31,9 @@ import { EuiButtonComponent } from "@eui/components/eui-button";
     styleUrl: "./data-ingestion.component.scss",
 })
 export class DataIngestionComponent {
-    public form: FormGroup;
+    public form: FormGroup = new FormGroup({
+        image: new FormControl(null, [Validators.required]),
+    });
     public progress = 0;
 
     public tabs = [

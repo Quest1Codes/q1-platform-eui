@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DataIngestionComponent } from './data-ingestion.component';
+import { LoadingSkeltonComponent } from './loading-skelton.component';
 
-describe('DataIngestionComponent', () => {
-  let component: DataIngestionComponent;
-  let fixture: ComponentFixture<DataIngestionComponent>;
+describe('LoadingSkeltonComponent', () => {
+  let component: LoadingSkeltonComponent;
+  let fixture: ComponentFixture<LoadingSkeltonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DataIngestionComponent]
+      imports: [LoadingSkeltonComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DataIngestionComponent);
+    fixture = TestBed.createComponent(LoadingSkeltonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

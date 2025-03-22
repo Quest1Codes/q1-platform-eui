@@ -1,7 +1,9 @@
 {
     "modules": {
         "core": {
-            "userDetails": "/user-details"
+            "userDetails": "/user-details",
+            "dashboardOverviewStats": "/dashboard/overview-stats",
+            "dataSourceDist": "/dashboard/data-source-dist"
         }
     }
 }

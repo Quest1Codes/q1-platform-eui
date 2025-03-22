@@ -1,10 +1,13 @@
-import { Component } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import {
     ApexChart,
     ApexStroke,
     EuiApexChartComponent,
 } from "@eui/components/externals/charts";
 import { EuiCardModule } from "@eui/components/eui-card";
+import { DashboardService } from "src/app/services/dashboard.service";
+import { LoadingSkeltonComponent } from "src/app/common/components/loading-skelton/loading-skelton.component";
+import { CommonModule } from "@angular/common";
 
 export type ChartOptions = {
     series: ApexAxisChartSeries;
@@ -19,22 +22,29 @@ export type ChartOptions = {
 
 @Component({
     selector: "app-data-source-distribution",
-    imports: [EuiCardModule, EuiApexChartComponent],
+    imports: [
+        EuiCardModule,
+        EuiApexChartComponent,
+        LoadingSkeltonComponent,
+        CommonModule,
+    ],
     templateUrl: "./data-source-distribution.component.html",
     styleUrl: "./data-source-distribution.component.scss",
 })
-export class DataSourceDistributionComponent {
+export class DataSourceDistributionComponent implements OnInit {
+    dashboardService = inject(DashboardService);
+
     chartOptions = {
         series: [
             {
                 name: "Data points",
-                data: [427, 356, 289, 254, 189, 143],
+                data: [],
             },
         ],
         chart: {
             height: 350,
             type: "bar",
-        },
+        } as ApexChart,
         plotOptions: {
             bar: {
                 dataLabels: {
@@ -52,14 +62,7 @@ export class DataSourceDistributionComponent {
         },
 
         xaxis: {
-            categories: [
-                "JSON/XML",
-                "Relation DB",
-                "Text Docs",
-                "CSV/Tabular",
-                "API Data",
-                "Images",
-            ],
+            categories: [],
             position: "bottom",
             labels: {
                 offsetY: 0,
@@ -109,10 +112,17 @@ export class DataSourceDistributionComponent {
             },
             labels: {
                 show: true,
-                // formatter: function (val) {
-                //     return val;
-                // },
             },
         },
     };
+
+    ngOnInit(): void {
+        this.dashboardService.fetchDataSourceDist().subscribe((data) => {
+            data.forEach((item) => {
+                this.chartOptions.series[0].data.push(item.value);
+                this.chartOptions.xaxis.categories.push(item.type);
+            });
+            this.dashboardService.changeDataSourceLoader(false);
+        });
+    }
 }

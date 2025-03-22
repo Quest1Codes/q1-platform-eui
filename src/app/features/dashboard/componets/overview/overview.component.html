@@ -1,6 +1,13 @@
 <div class="container">
+    <app-loading-skelton
+        *ngIf="dashboardService.statLoader$ | async"
+        rows="{{ 1 }}"
+        columns="{{ 3 }}"
+        skeltonType="rectangle"
+        height="{{ 150 }}"
+    />
     <div class="row">
-        @for(stat of stats; let i = $index; track stat) {
+        @for(stat of stats(); let i = $index; track stat) {
         <div class="col-md-4">
             <eui-card>
                 <eui-card-header>

@@ -2,7 +2,8 @@
     "modules": {
         "core": {
             "base": "SERVER_HOST/api",
-            "userDetails": "/user-details"
+            "userDetails": "/user-details",
+            "dashboardOverviewStats": "/dashboard/overview-stats"
         }
     }
 }

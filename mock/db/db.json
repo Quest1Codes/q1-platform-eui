@@ -1,10 +1,53 @@
 {
-  "user-details": {
-    "userId": "doejohn",
-    "firstName": "John",
-    "lastName": "Doe",
-    "email": "John.DOE@ec.europa.eu"
-  },
-  "users": [
-  ]
+    "user-details": {
+        "userId": "yuvaraj",
+        "firstName": "Yuvaraj",
+        "lastName": "N",
+        "email": "yuvaraj@quest.io"
+    },
+    "users": [],
+    "overViewStats": [
+        {
+            "title": "Total Data Sources",
+            "value": "1658",
+            "changePercentage": 8
+        },
+        {
+            "title": "Active Queries",
+            "value": "284",
+            "changePercentage": 12
+        },
+
+        {
+            "title": "Avg. Response Time",
+            "value": "1.2s",
+            "changePercentage": -5
+        }
+    ],
+    "dataSourceDist": [
+        {
+            "type": "JSON/XML",
+            "value": "427"
+        },
+        {
+            "type": "Relation DB",
+            "value": "356"
+        },
+        {
+            "type": "Text Docs",
+            "value": "289"
+        },
+        {
+            "type": "CSV/Tabular",
+            "value": "254"
+        },
+        {
+            "type": "API Data",
+            "value": "189"
+        },
+        {
+            "type": "Images",
+            "value": "143"
+        }
+    ]
 }
