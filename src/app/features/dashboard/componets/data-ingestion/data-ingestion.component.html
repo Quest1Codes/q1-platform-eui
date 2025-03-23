@@ -14,9 +14,8 @@
                 <eui-tab-content
                     ><form [formGroup]="form" enctype="multipart/form-data">
                         <eui-file-upload
-                            formControlName="image"
+                            formControlName="file"
                             [progress]="progress"
-                            [accept]="'.jpg'"
                             hasDragArea
                         >
                             <span class="eui-u-mr-xs"
@@ -57,18 +56,18 @@
                         </div>
                     </div>
                     <eui-progress-bar
-                        [progress]="(upload.uploaded / upload.sizeInMB) * 100"
+                        [progress]="upload.progress"
                     ></eui-progress-bar>
                 </div>
-                @if(upload.uploaded == upload.sizeInMB) {
+                @if(upload.progress === 100) {
                 <eui-icon-svg
                     class="col-md-auto eui-u-c-success"
                     size="xs"
                     icon="eui-ecl-check-filled"
                 />
-                } @if(upload.uploaded != upload.sizeInMB) {
+                } @if(upload.progress < 100) {
                 <div class="col-md-auto eui-u-c-neutral">
-                    {{ uplaodedPercentage(upload.sizeInMB, upload.uploaded) }} %
+                    {{ upload.progress }} %
                 </div>
                 }
             </div>

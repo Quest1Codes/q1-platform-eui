@@ -20,6 +20,11 @@ export class DashboardService {
 
     changeDataSourceLoader(state: boolean) {
         this.dataSourceLoader$.next(state);
+        console.log(
+            "dataSourceLoader",
+            this.dataSourceLoader$.getValue(),
+            state
+        );
     }
 
     fetchOverviewStats(): Observable<Array<OVERVIEW_STATS>> {

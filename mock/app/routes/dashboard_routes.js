@@ -8,5 +8,11 @@ module.exports = function (app, db) {
         app.get("/api/dashboard/data-source-dist", (req, res) => {
             res.send(db.get("dataSourceDist"));
         });
+        app.post("/api/fake-api", (req, res) => {
+            res.send({
+                status: "success",
+                data: req.body,
+            });
+        });
     });
 };
