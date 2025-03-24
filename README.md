@@ -1,5 +1,5 @@
 ## Background and Context
-The intent of this application is to demonstrate the ease with which a custom User Interface (written in technologies such as Vite and React) can be migrated to one one that is based on the eUI Platform (https://eui.ecdevops.eu/). The original application is available at https://github.com/Quest1Codes/q1-platform
+The intent of this application is to demonstrate the ease with which a custom User Interface (written in technologies such as Vite and React) can be migrated to one one that is based on the eUI library (https://eui.ecdevops.eu/). The original application is available at https://github.com/Quest1Codes/q1-platform
 
 ## Development server
 
