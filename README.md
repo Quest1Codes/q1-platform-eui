@@ -1,18 +1,10 @@
-# eUI starter app
+# The intent of this application is to demonstrate the ease with which a custom User Interface (written in technologies such as Vite and React) can be migrated to one one that is based on the eUI Platform (https://eui.ecdevops.eu/). The original application is available at https://github.com/Quest1Codes/q1-platform
 
 ## Development server
 
-````npm start```` to start the angular project with node-express proxy mock server
+````yarn```` to install all the dependencies associated with the application
 
-````npm run start-proxy```` to start the angular project with real backend proxy server deployed
-
-````npm run build```` to build, lint and test your project for DEV
-
-````npm run build-prod```` to build, lint and test your project for PROD
-
-````npm run build-prod-skip-test```` to build and lint your project for PROD - Unit test skipped - to be used on Bamboo plans
-
-````npm run build-prod-stats```` to build, lint and test your project for PROD - with stats.json file generated for webpack-bundle-analyzer input
+````yarn start```` to start the angular project listening at the default port 4200
 
 * check package.json for more info on executable scripts provided
 
