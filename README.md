@@ -2,6 +2,10 @@
 
 The intent of this application is to demonstrate the ease with which a custom User Interface (written in technologies such as Vite and React) can be migrated to one one that is based on the eUI library and Angular (https://eui.ecdevops.eu/). The original application is available at https://github.com/Quest1Codes/q1-platform
 
+## Demo
+
+DEMO URL: https://q1-platform-eui-1.onrender.com/
+
 ## Development server
 
 `git clone https://github.com/Quest1Codes/q1-platform-eui` to clone this project

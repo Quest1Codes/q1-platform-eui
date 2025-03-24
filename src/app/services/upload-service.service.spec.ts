@@ -16,7 +16,7 @@ import { CONFIG_TOKEN } from "@eui/core";
 fdescribe("UploadServiceService", () => {
     let service: UploadServiceService;
     let httpMock: HttpTestingController;
-    let configMock = {
+    const configMock = {
         global: {},
         modules: {
             core: {
