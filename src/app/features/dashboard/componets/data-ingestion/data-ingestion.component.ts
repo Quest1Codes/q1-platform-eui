@@ -72,7 +72,7 @@ export class DataIngestionComponent {
     submit() {
         if (this.form.valid) {
             this.uploadUtilsService
-                .sendData(this.form.value, "http://localhost:3000/api/fake-api")
+                .sendData(this.form.value)
                 .pipe(
                     this.uploadUtilsService.uploadProgress((progress) => {
                         if (this.form.get("file").value.length > 0) {

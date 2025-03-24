@@ -11,10 +11,21 @@ import {
     withInterceptorsFromDi,
 } from "@angular/common/http";
 import { of, Subject } from "rxjs";
+import { CONFIG_TOKEN } from "@eui/core";
 
-describe("UploadServiceService", () => {
+fdescribe("UploadServiceService", () => {
     let service: UploadServiceService;
     let httpMock: HttpTestingController;
+    let configMock = {
+        global: {},
+        modules: {
+            core: {
+                base: "http://localhost:3000/api",
+                dashboardOverviewStats: "/stats",
+                dataSourceDist: "/dataSourceDist",
+            },
+        },
+    };
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [],
@@ -22,6 +33,7 @@ describe("UploadServiceService", () => {
                 UploadServiceService,
                 provideHttpClient(withInterceptorsFromDi()),
                 provideHttpClientTesting(),
+                { provide: CONFIG_TOKEN, useValue: configMock },
             ],
         });
         service = TestBed.inject(UploadServiceService);
@@ -32,24 +44,24 @@ describe("UploadServiceService", () => {
     });
     it("should make a POST request to the correct API endpoint", () => {
         const data = { file: [new File(["foo"], "foo.txt")] };
-        const url = "https://example.com/api/endpoint";
-        service.sendData(data, url).subscribe();
+        const url = "http://localhost:3000/api/fake-api";
+        service.sendData(data).subscribe();
         const req = httpMock.expectOne(url);
         expect(req.request.method).toBe("POST");
     });
     it("should send the correct data in the request body", () => {
         const data = { file: [new File(["foo"], "foo.txt")] };
-        const url = "https://example.com/api/endpoint";
-        service.sendData(data, url).subscribe();
+        const url = "http://localhost:3000/api/fake-api";
+        service.sendData(data).subscribe();
         const req = httpMock.expectOne(url);
         // expect(req.request.body).toEqual(data);
     });
     it("should set the correct request options", () => {
         const data = { file: [new File(["foo"], "foo.txt")] };
-        const url = "https://example.com/api/endpoint";
+        const url = "http://localhost:3000/api/fake-api";
         const callback = jasmine.createSpy("callback");
         service
-            .sendData(data, url)
+            .sendData(data)
             .pipe(service.uploadProgress(callback), service.toResponseBody())
             .subscribe();
         const req = httpMock.expectOne(url);

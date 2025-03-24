@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import {
     HttpClient,
     HttpEvent,
@@ -8,15 +8,20 @@ import {
 } from "@angular/common/http";
 import { pipe, Subject } from "rxjs";
 import { filter, map, takeUntil, tap } from "rxjs/operators";
+import { EuiAppConfig } from "@eui/base";
+import { CONFIG_TOKEN } from "@eui/core";
 
 @Injectable({
     providedIn: "root",
 })
 export class UploadServiceService {
-    constructor(private httpClient: HttpClient) {}
+    httpClient = inject(HttpClient);
+    private config: EuiAppConfig = inject(CONFIG_TOKEN);
 
-    public sendData(data: any, APIEndPoint: string) {
-        return this.httpClient.post(APIEndPoint, this.toFormData(data), {
+    public sendData(data: any) {
+        const moduleCoreApi = this.config.modules?.["core"];
+        const url = `${moduleCoreApi?.["base"]}/fake-api`;
+        return this.httpClient.post(url, this.toFormData(data), {
             reportProgress: true,
             observe: "events",
             withCredentials: true,
