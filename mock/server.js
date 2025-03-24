@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // const cors = require("cors");
 // if needed to be reached from another localhost server for local testing a distributed app f.e.
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.header("Access-Control-Allow-Origin", req.headers.origin);
     res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
     res.header(
         "Access-Control-Allow-Headers",
