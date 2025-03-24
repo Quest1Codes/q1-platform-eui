@@ -11,7 +11,7 @@ The intent of this application is to demonstrate the ease with which a custom Us
 
 ````yarn start```` to start the angular project listening at the default port 4200
 
-* check package.json for more info on executable scripts provided
+Check package.json for more info on executable scripts provided
 
 ## Further help
 
