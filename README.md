@@ -3,6 +3,10 @@ The intent of this application is to demonstrate the ease with which a custom Us
 
 ## Development server
 
+````git clone https://github.com/Quest1Codes/q1-platform-eui```` to clone this project
+
+````cd q1-platform-eui```` to navigate to the top level project directory
+
 ````yarn```` to install all the dependencies associated with the application
 
 ````yarn start```` to start the angular project listening at the default port 4200
