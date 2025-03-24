@@ -18,7 +18,7 @@ describe("DashboardService", () => {
     let httpMock: HttpTestingController;
     let configMock: EuiAppConfig;
 
-    beforeEach(async () => {
+    beforeEach(() => {
         configMock = {
             global: {},
             modules: {

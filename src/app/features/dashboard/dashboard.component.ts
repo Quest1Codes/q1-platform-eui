@@ -9,32 +9,28 @@ import { RouterModule, Routes } from "@angular/router";
     standalone: true,
     imports: [EuiPageModule, EuiTabsModule, RouterModule],
 })
-export class Dashboard implements OnInit {
+export class DashboardComponent implements OnInit {
     tabs = [];
     ngOnInit(): void {
-        import("./componets/overview/overview.component").then(
-            ({ OverviewComponent }) => {
-                this.tabs = [
-                    { tabLabel: "Overview", url: "/screen/dashboard" },
-                    {
-                        tabLabel: "Data Ingestion",
-                        url: "/screen/dashboard/data-ingestion",
-                    },
-                    {
-                        tabLabel: "Query Interface",
-                        url: "/screen/dashboard/query-interface",
-                    },
-                    {
-                        tabLabel: "System Status",
-                        url: "/screen/dashboard/system-status",
-                    },
-                    {
-                        tabLabel: "API Access",
-                        url: "/screen/dashboard/api-access",
-                    },
-                ];
-            }
-        );
+        this.tabs = [
+            { tabLabel: "Overview", url: "/screen/dashboard" },
+            {
+                tabLabel: "Data Ingestion",
+                url: "/screen/dashboard/data-ingestion",
+            },
+            {
+                tabLabel: "Query Interface",
+                url: "/screen/dashboard/query-interface",
+            },
+            {
+                tabLabel: "System Status",
+                url: "/screen/dashboard/system-status",
+            },
+            {
+                tabLabel: "API Access",
+                url: "/screen/dashboard/api-access",
+            },
+        ];
     }
 
     onTabClose(event: { tab: EuiTabComponent; index: number }) {

@@ -10,9 +10,9 @@ import { CONFIG_TOKEN } from "@eui/core";
 })
 export class DashboardService {
     http: HttpClient = inject(HttpClient);
-    private config: EuiAppConfig = inject(CONFIG_TOKEN);
     statLoader$ = new BehaviorSubject(false);
     dataSourceLoader$ = new BehaviorSubject(false);
+    private config: EuiAppConfig = inject(CONFIG_TOKEN);
 
     changeStateLoader(state: boolean) {
         this.statLoader$.next(state);

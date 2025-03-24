@@ -38,6 +38,28 @@ export class DataIngestionComponent {
     });
     public progress = 0;
     uploadUtilsService = inject(UploadServiceService);
+    recentUploads = [
+        {
+            filename: "customer_data.csv",
+            sizeInMB: "2.4",
+            progress: 100,
+        },
+        {
+            filename: "product_catalog.json",
+            sizeInMB: "8.1",
+            progress: 100,
+        },
+        {
+            filename: "user_feedback.txt",
+            sizeInMB: "1.2",
+            progress: 50,
+        },
+        {
+            filename: "system_logs.log",
+            sizeInMB: "4.7",
+            progress: 35,
+        },
+    ];
 
     public tabs = [
         { tabLabel: "Structured Data" },
@@ -83,27 +105,4 @@ export class DataIngestionComponent {
                 });
         }
     }
-
-    recentUploads = [
-        {
-            filename: "customer_data.csv",
-            sizeInMB: "2.4",
-            progress: 100,
-        },
-        {
-            filename: "product_catalog.json",
-            sizeInMB: "8.1",
-            progress: 100,
-        },
-        {
-            filename: "user_feedback.txt",
-            sizeInMB: "1.2",
-            progress: 50,
-        },
-        {
-            filename: "system_logs.log",
-            sizeInMB: "4.7",
-            progress: 35,
-        },
-    ];
 }

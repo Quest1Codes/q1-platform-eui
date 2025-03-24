@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { DataSourceDistributionComponent } from "./data-source-distribution.component";
 import { DashboardService } from "src/app/services/dashboard.service";
@@ -7,7 +8,7 @@ describe("DataSourceDistributionComponent", () => {
     let component: DataSourceDistributionComponent;
     let fixture: ComponentFixture<DataSourceDistributionComponent>;
     let dashboardService: DashboardService;
-    let changeDataSourceLoaderSpy: any;
+    let changeDataSourceLoaderSpy: jasmine.Spy;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({

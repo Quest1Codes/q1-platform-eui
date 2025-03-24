@@ -9,14 +9,14 @@
     </eui-card-header>
     <eui-card-content>
         <app-loading-skelton
-            *ngIf="dashboardService.dataSourceLoader$ | async"
+            *ngIf="(dashboardService.dataSourceLoader$ | async) === true"
             rows="{{ 1 }}"
             columns="{{ 1 }}"
             skeltonType="rectangle"
             height="{{ 250 }}"
         ></app-loading-skelton>
         <eui-apex-chart
-            *ngIf="!(dashboardService.dataSourceLoader$ | async)"
+            *ngIf="(dashboardService.dataSourceLoader$ | async) === false"
             [series]="chartOptions.series"
             [chart]="chartOptions.chart"
             [dataLabels]="chartOptions.dataLabels"
