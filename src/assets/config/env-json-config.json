@@ -1,7 +1,6 @@
 {
     "modules": {
         "core": {
-            "base": "https://eui-poc.onrender.com/api",
             "userDetails": "/user-details",
             "dashboardOverviewStats": "/dashboard/overview-stats",
             "dataSourceDist": "/dashboard/data-source-dist"
